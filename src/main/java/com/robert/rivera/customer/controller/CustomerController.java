@@ -2,11 +2,10 @@ package com.robert.rivera.customer.controller;
 
 import com.robert.rivera.customer.entity.Customer;
 
+import com.robert.rivera.customer.entity.CustomerRequest;
 import com.robert.rivera.customer.entity.TransactionResponse;
 import com.robert.rivera.customer.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +21,9 @@ public class CustomerController  {
         return services.getAll();
     }
     @PostMapping("/post")
-    public String addCustomer(@RequestBody Customer customer){
+    @ResponseBody
+    public String addCustomer(@RequestBody CustomerRequest customerRequest){
+        Customer customer = new Customer(customerRequest);
         if(services.addCustomer(customer) != null) {
             TransactionResponse transactionResponse = new TransactionResponse();
             transactionResponse.setCustomerNumber(customer.getCustomerNumber());

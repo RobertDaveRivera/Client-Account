@@ -30,4 +30,6 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private AccountTypes accountType;
 
+    public Customer(CustomerRequest customerRequest) {
+    }
 }

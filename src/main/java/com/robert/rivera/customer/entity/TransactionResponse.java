@@ -2,7 +2,6 @@ package com.robert.rivera.customer.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
 
 @ToString
 @Getter
